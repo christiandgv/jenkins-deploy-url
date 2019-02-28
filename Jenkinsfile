@@ -6,16 +6,46 @@ def STACK_NAME = "intl-latam-poliza-backend-jenks"
 def STACK_NAME_API = "intl-latam-poliza-apigateway-jenks"
 node('linux'){
 
+
+stage('Git Checkout'){
+    checkout scm
+  }
+
+
+stage('Validate parameters') {
+  when {
+    expression {
+      // Only run this stage if the BUILD_IMAGE is invalid
+      return !(env.BUILD_IMAGE)
+    }
+  }
+  steps {
+    withCredentials([string(credentialsId:'jenkins-build', variable:'TOKEN')]) {
+        sh '''
+		ls -ltr
+		npm install		
+        '''
+    }
+
+    // Abort the build, skipping subsequent stages
+    error("Aborting build since parameters are invalid")
+  }
+}
+
+}
+
+/*
+
 deployToDev{
   stage('Git Checkout'){
     checkout scm
 
-/*sh """	
+sh """	
 				
                 aws s3 cp CODE/* s3://intl-latam-ec-poliza-bucket/ --recursive
                 ls -latr
             """
-*/
+
   }
 
   stage('Upload to Artifactory'){
@@ -35,3 +65,5 @@ deployToDev{
     }
   }
 }
+
+*/
