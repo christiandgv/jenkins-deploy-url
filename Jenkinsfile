@@ -4,7 +4,7 @@ def MAJOR_VERSION = "1"
 def ARTIFACT_VERSION = "${MAJOR_VERSION}.${BUILD_NUMBER}"
 def STACK_NAME = "intl-latam-poliza-backend-jenks"
 def STACK_NAME_API = "intl-latam-poliza-apigateway-jenks"
-node('linux'){
+//node('linux'){
 
 
 stage('Git Checkout'){
@@ -33,7 +33,7 @@ stage('Validate parameters') {
   }
 }
 
-}
+//}
 
 /*
 
