@@ -1,3 +1,11 @@
+#!/usr/bin/env groovy
+import hudson.model.*
+
+node('master') {
+    sh("echo 'hola mundo'")   
+}
+
+
 //library ('utils@master') _
 
 def MAJOR_VERSION = "1"
