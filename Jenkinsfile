@@ -19,7 +19,7 @@ stage('Git Checkout'){
 
 
 stage('Validate parameters') {
-  steps {
+  
 
         sh """
 		ls -ltr
@@ -27,9 +27,6 @@ stage('Validate parameters') {
 		npm install		
         """
 
-
-    // Abort the build, skipping subsequent stages
-  }
 }
 
 
