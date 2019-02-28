@@ -23,6 +23,7 @@ stage('Validate parameters') {
     withCredentials([string(credentialsId:'jenkins-build', variable:'TOKEN')]) {
         sh '''
 		ls -ltr
+		 cd intermediarios 
 		npm install		
         '''
     }
