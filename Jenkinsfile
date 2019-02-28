@@ -2,8 +2,6 @@
 import hudson.model.*
 
 node('master') {
-    sh("echo 'hola mundo'")   
-}
 
 
 //library ('utils@master') _
@@ -23,17 +21,21 @@ stage('Git Checkout'){
 stage('Validate parameters') {
   steps {
 
-        sh '''
+        sh """
 		ls -ltr
 		 cd intermediarios 
 		npm install		
-        '''
+        """
 
 
     // Abort the build, skipping subsequent stages
     error("Aborting build since parameters are invalid")
   }
 }
+
+
+}
+
 
 //}
 
