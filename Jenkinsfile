@@ -13,20 +13,14 @@ stage('Git Checkout'){
 
 
 stage('Validate parameters') {
-  when {
-    expression {
-      // Only run this stage if the BUILD_IMAGE is invalid
-      return !(env.BUILD_IMAGE)
-    }
-  }
   steps {
-    withCredentials([string(credentialsId:'jenkins-build', variable:'TOKEN')]) {
+
         sh '''
 		ls -ltr
 		 cd intermediarios 
 		npm install		
         '''
-    }
+
 
     // Abort the build, skipping subsequent stages
     error("Aborting build since parameters are invalid")
