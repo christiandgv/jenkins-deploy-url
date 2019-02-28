@@ -29,7 +29,6 @@ stage('Validate parameters') {
 
 
     // Abort the build, skipping subsequent stages
-    error("Aborting build since parameters are invalid")
   }
 }
 
