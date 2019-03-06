@@ -21,7 +21,7 @@ stage('Validate parameters') {
           echo "bucket $BUCKET_NAME exist"
           else 
           aws s3 mb s3://$BUCKET_NAME
-
+    fi
 		ls -ltr
 		 cd intermediarios 
 		npm install	
