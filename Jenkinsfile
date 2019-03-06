@@ -22,10 +22,10 @@ stage('Validate parameters') {
           else 
           aws s3 mb s3://$BUCKET_NAME
     fi
-		ls -ltr
-		 cd intermediarios 
+		cd intermediarios 
 		npm install	
-    aws s3 cp ./dist s3://$BUCKET_NAME --acl public-read --recursive
+    ls -ltr
+    aws s3 cp dist s3://$BUCKET_NAME  --recursive --acl public-read
         """
 
 deployToDev{
