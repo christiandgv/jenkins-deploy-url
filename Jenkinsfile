@@ -24,6 +24,7 @@ stage('Validate parameters') {
     fi
 		cd intermediarios 
 		npm install	
+    npm run-script build
     ls -ltr
     aws s3 cp dist s3://$BUCKET_NAME  --recursive --acl public-read
         """
